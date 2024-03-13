@@ -35,7 +35,7 @@ function listItems(basket){
   - do not use `basket = []` to reset the array */
 
   function empty(basket){
-    basket.length = 0
+    basket.splice(0,basket.length);
     return basket;
   }
 
@@ -45,7 +45,7 @@ console.log("Items In the basket:", listItems(basket));
 console.log('adding apples. (expect true)', addItem("apples"));
 console.log("Item count:", basket.length);
 console.log("basket: ", basket);
-console.log("These items are in your basket:", listItems(basket));
+console.log(`These items are in your basket: ${listItems(basket)}`);
 console.log('adding eggs', addItem("eggs"));
 console.log("basket check:", basket);
 console.log(`Now you have ${basket.length} items:`, listItems(basket));
