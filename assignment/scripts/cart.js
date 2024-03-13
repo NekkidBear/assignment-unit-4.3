@@ -19,14 +19,15 @@ function addItem(item){
 //   - loop over the items in the `basket` array
 //   - console.log each individual item on a new line
 
-function listItems(basketArray){
-    if (basketArray && basketArray.length>0){
-        for (let i=0; i<=basketArray.length-1; i++){
-            return basketArray[i];
+function listItems(basket){
+    if (basket && basket.length>0){ //check if basket is valid, and has items
+        for (item of basket){ //loop through items
+            console.log(basket[item]);//display item
         }
     } else {
-        return "Your basket is empty");
+        console.log("Your basket is empty");
     }
+    return "";
 }
 
 /**- Create a function called `empty`. It should:
@@ -40,11 +41,11 @@ function listItems(basketArray){
 
 console.log(`Let's go shopping! Currently there are ${basket.length} items in your basket.`)
 console.log("Basket: ", basket)
-console.log("In the basket", listItems(basket));
+console.log("Items In the basket:", listItems(basket));
 console.log('adding apples. (expect true)', addItem("apples"));
 console.log("Item count:", basket.length);
 console.log("basket: ", basket);
-console.log("These items are in your basket", listItems(basket));
+console.log("These items are in your basket:", listItems(basket));
 console.log('adding eggs', addItem("eggs"));
 console.log("basket check:", basket);
 console.log(`Now you have ${basket.length} items:`, listItems(basket));
