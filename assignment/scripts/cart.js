@@ -21,8 +21,8 @@ function addItem(item){
 
 function listItems(basketArray){
     if (basketArray && basketArray.length>0){
-        for (let item of basketArray){
-            console.log(basketArray[item]);
+        for (let i=0; i<=basketArray.length; i++){
+            console.log(basketArray[i]);
         }
     } else {
         console.log("Your basket is empty");
@@ -47,7 +47,7 @@ console.log("basket: ", basket);
 console.log("These items are in your basket", listItems(basket));
 console.log('adding eggs', addItem("eggs"));
 console.log("basket check:", basket);
-console.log('Now you have: ', listItems(basket));
+console.log(`Now you have ${basket.length} items:`, listItems(basket));
 
 
 // DO NOT MODIFY
