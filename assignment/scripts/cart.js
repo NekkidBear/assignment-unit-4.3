@@ -21,11 +21,11 @@ function addItem(item){
 
 function listItems(basketArray){
     if (basketArray && basketArray.length>0){
-        for (let i=0; i<=basketArray.length; i++){
-            console.log(basketArray[i]);
+        for (let i=0; i<=basketArray.length-1; i++){
+            return basketArray[i];
         }
     } else {
-        console.log("Your basket is empty");
+        return "Your basket is empty");
     }
 }
 
@@ -48,6 +48,9 @@ console.log("These items are in your basket", listItems(basket));
 console.log('adding eggs', addItem("eggs"));
 console.log("basket check:", basket);
 console.log(`Now you have ${basket.length} items:`, listItems(basket));
+console.log("Time to check out. Emptying basket.");
+empty(basket);
+console.log("In the basket:", listItems(basket));
 
 
 // DO NOT MODIFY
