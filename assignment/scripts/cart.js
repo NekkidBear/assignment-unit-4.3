@@ -22,7 +22,7 @@ function addItem(item){
 function listItems(basket){
     if (basket && basket.length>0){ //check if basket is valid, and has items
         for (item of basket){ //loop through items
-            console.log(basket[item]);//display item
+            console.log(item);//display item
         }
     } else {
         console.log("Your basket is empty");
