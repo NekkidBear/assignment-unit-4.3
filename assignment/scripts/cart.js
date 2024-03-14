@@ -4,6 +4,7 @@ console.log('***** Cart Functions *****');
 
 /* Create a global variable named `basket` and set it to an empty array. */
 let basket = [];
+const maxItems = 5; //stretch goal: using functions inside other functions
 
 /**Create a function called `addItem`. It should:
   - take an input parameter for a string `item`
@@ -11,8 +12,12 @@ let basket = [];
   - return `true` indicating the item was added */
 
 function addItem(item){
+    if(isFull(basket.length)){
+        return false;
+    } else {
     basket.push(item)
     return true;
+    }
 }
 
 //   - Create a function called `listItems`. It should:
@@ -34,10 +39,43 @@ function listItems(basket){
   - reset the `basket` to an empty array
   - do not use `basket = []` to reset the array */
 
-  function empty(basket){
+  function empty(){
     basket.splice(0,basket.length);
     return basket;
   }
+
+//   ### Stretch Goals 
+// Remember that Stretch Goals are not required, but will help you to further develop concepts from the skills we have covered.
+
+// __Using functions in other functions!__
+
+// 1. Add a global `const` named `maxItems` and set it to 5.
+
+
+// 2. Create a function called isFull(). It should:
+//   - return `false` if the basket contains *less* than max number of items
+//   - return `true` otherwise (equal or more than maxItems)
+function isFull(basket){
+    if(basket.length<maxItems){
+        return false;
+    } else {
+        return true; /** this could be outside the if statment, but it is easier to read
+         with the explicit else.*/
+    } 
+}
+
+// 3. Update the required `addItem` function to:
+//   - Use the `isFull` function to prevent more than `maxItems` from being added to the basket. 
+//   - If an item was added to the array, return `true`
+//   - If there was no room and the item could not be added return `false`
+
+// __Using Array built-in functions!__
+
+// 4. Create a function called `removeItem`. It should:
+//   - Take an input parameter for a string `item`
+//   - Use [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) to find the index of the first matching item in the basket.
+//   - Use [Array.splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) to remove the first matching item from the basket.
+//   - Return the item removed or `null` if the item was not found
 
 console.log(`Let's go shopping! Currently there are ${basket.length} items in your basket.`)
 console.log("Basket: ", basket)
@@ -45,13 +83,23 @@ console.log("Items In the basket:", listItems(basket));
 console.log('adding apples. (expect true)', addItem("apples"));
 console.log("Item count:", basket.length);
 console.log("basket: ", basket);
-console.log(`These items are in your basket: ${listItems(basket)}`);
+console.log('These items are in your basket:')
+listItems(basket);
 console.log('adding eggs', addItem("eggs"));
 console.log("basket check:", basket);
-console.log(`Now you have ${basket.length} items:`, listItems(basket));
+console.log(`Now you have ${basket.length} items:`)
+listItems(basket);
+console.log("We need a few more things: bread, milk, chicken, and cheese");
+console.log("adding bread, expect true", addItem("bread"));
+console.log("adding milk, expect true", addItem("milk"));
+console.log("adding chicken, expect true", addItem("chicken"));
+console.log("adding cheese, expect false", addItem("cheese"));
+console.log("Total items: ", basket.length);
+console.log("Items in your basket:");
+listItems(basket);
 console.log("Time to check out. Emptying basket.");
-empty(basket);
-console.log("In the basket:", listItems(basket));
+empty();
+console.log("In the basket:")
 
 
 // DO NOT MODIFY
