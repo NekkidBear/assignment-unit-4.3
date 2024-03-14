@@ -12,7 +12,7 @@ const maxItems = 5; //stretch goal: using functions inside other functions
   - return `true` indicating the item was added */
 
 function addItem(item){
-    if(isFull(basket.length)){
+    if(isFull()){
         return false;
     } else {
     basket.push(item)
@@ -55,13 +55,11 @@ function listItems(basket){
 // 2. Create a function called isFull(). It should:
 //   - return `false` if the basket contains *less* than max number of items
 //   - return `true` otherwise (equal or more than maxItems)
-function isFull(basket){
-    if(basket.length<maxItems){
-        return false;
-    } else {
-        return true; /** this could be outside the if statment, but it is easier to read
-         with the explicit else.*/
+function isFull(){
+    if(basket.length>=maxItems){
+        return true;
     } 
+    return false;
 }
 
 // 3. Update the required `addItem` function to:
@@ -76,6 +74,18 @@ function isFull(basket){
 //   - Use [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) to find the index of the first matching item in the basket.
 //   - Use [Array.splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) to remove the first matching item from the basket.
 //   - Return the item removed or `null` if the item was not found
+
+function removeItem(item){
+    if(typeof item === "string"){
+        let itemIndex = basket.indexOf(item);
+        if (itemIndex === -1){
+            return null;
+        } else {
+            basket.splice(itemIndex,1);
+            return item;
+        }
+    }
+}
 
 console.log(`Let's go shopping! Currently there are ${basket.length} items in your basket.`)
 console.log("Basket: ", basket)
@@ -96,6 +106,12 @@ console.log("adding chicken, expect true", addItem("chicken"));
 console.log("adding cheese, expect false", addItem("cheese"));
 console.log("Total items: ", basket.length);
 console.log("Items in your basket:");
+listItems(basket);
+console.log("on second thought, we don't need chicken (expect 'chicken')");
+console.log("Returning the chicken:", removeItem("chicken"));
+console.log("or the cheese (expect null)")
+console.log("putting back cheese.", removeItem("cheese"));
+console.log("Final check. Do we have everything?");
 listItems(basket);
 console.log("Time to check out. Emptying basket.");
 empty();
